@@ -1,4 +1,5 @@
 import express from "express"
+import cron from "node-cron"
 import {
   initServerStatus,
   isServerHealthy,
@@ -33,4 +34,6 @@ const checkAllServerHealths = async (
   }
 }
 
-checkAllServerHealths(serverStatuses)
+cron.schedule("* * * * * *", async () => {
+  await checkAllServerHealths(serverStatuses)
+})
