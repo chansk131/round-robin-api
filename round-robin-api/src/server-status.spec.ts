@@ -84,7 +84,10 @@ describe("isServerHealthy", () => {
       })
     )
 
-    const result = await isServerHealthy("http://localhost:3000/health-check")
+    const result = await isServerHealthy(
+      "http://localhost:3000/health-check",
+      500
+    )
 
     expect(result).toBe(false)
   })

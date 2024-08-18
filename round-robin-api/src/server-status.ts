@@ -15,10 +15,13 @@ export const initServerStatus = () => {
   }))
 }
 
-export const isServerHealthy = async (url: string): Promise<boolean> => {
+export const isServerHealthy = async (
+  url: string,
+  timeout = 500
+): Promise<boolean> => {
   try {
     console.log("checking health for endpoint", url)
-    const response = await fetch(url, { signal: AbortSignal.timeout(500) })
+    const response = await fetch(url, { signal: AbortSignal.timeout(timeout) })
     if (response.ok) {
       console.log("server is ok")
       return true
