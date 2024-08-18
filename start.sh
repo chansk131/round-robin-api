@@ -2,10 +2,17 @@ cd ./application
 npm run build
 
 max=${1:-3}
+all_ports=""
 echo "starting 3 application instances"
 for i in `seq $max`
 do
-  (PORT=300$i npm run serve) &
+  port="300$i"
+  if [[ $all_ports -eq "" ]]; then all_ports="$port"; else all_ports="${all_ports},${port}"; fi
+  (PORT=$port npm run serve) &
 done
+
+cd ../round-robin-api
+npm run build
+(PORT=8080 APPLICATION_URL=localhost ALL_PORTS=$all_ports npm run serve) &
 
 wait
