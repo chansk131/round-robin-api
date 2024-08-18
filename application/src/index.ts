@@ -9,6 +9,10 @@ app.get("/", (_, res) => {
   res.send("Hello World!")
 })
 
+app.get("/health-check", (_, res) => {
+  res.send("OK")
+})
+
 app.post("/", (req, res) => {
   res.send(req.body)
 })
