@@ -3,7 +3,7 @@ npm run build
 
 max=${1:-3}
 all_ports=""
-echo "starting 3 application instances"
+echo "starting $max application instances"
 for i in `seq $max`
 do
   port="300$i"
@@ -13,6 +13,6 @@ done
 
 cd ../round-robin-api
 npm run build
-(PORT=8080 APPLICATION_URL=localhost ALL_PORTS=$all_ports npm run serve) &
+(PORT=8080 APPLICATION_URL=http://localhost ALL_PORTS=$all_ports npm run serve) &
 
 wait
