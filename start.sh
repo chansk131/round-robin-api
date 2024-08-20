@@ -13,6 +13,7 @@ done
 
 cd ../round-robin-api
 npm run build
+echo "starting round robin api"
 (PORT=8080 APPLICATION_URL=http://localhost ALL_PORTS=$all_ports npm run serve) &
 
 wait
