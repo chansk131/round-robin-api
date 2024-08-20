@@ -6,7 +6,7 @@ export type ServerStatus = {
 }
 
 export const initServerStatus = () => {
-  const { APPLICATION_ENDPOINTS: applicationEndpoints } = getConfig()
+  const applicationEndpoints = getConfig().APPLICATION_ENDPOINTS
   console.log({ applicationEndpoints })
 
   return applicationEndpoints.map((endpoint) => ({
@@ -30,7 +30,7 @@ export const isServerHealthy = async (
     console.log("server response NOT ok")
     return false
   } catch (error) {
-    console.error(error)
+    console.error(error, url)
     return false
   }
 }

@@ -1,8 +1,5 @@
 import { describe, expect, it, jest } from "@jest/globals"
 import { RoundRobin } from "./round-robin"
-import { isServerHealthy } from "./server-status"
-
-jest.mock("./server-status")
 
 describe("RoundRobin", () => {
   describe("getHealthyEndpoint", () => {
