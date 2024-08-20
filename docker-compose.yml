@@ -1,0 +1,23 @@
+services:
+  application1:
+    build: ./application
+    ports:
+      - "3001:3000"
+
+  application2:
+    build: ./application
+    ports:
+      - "3002:3000"
+
+  application3:
+    build: ./application
+    ports:
+      - "3003:3000"
+
+  round_robin_api:
+    build: ./round-robin-api
+    ports:
+      - "8080:3000"
+    environment:
+      - APPLICATION_URL="http://localhost"
+      - ALL_PORTS="3001,3002,3003"
